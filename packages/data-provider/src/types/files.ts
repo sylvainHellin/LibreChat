@@ -1,4 +1,7 @@
-import { EToolResources } from './assistants';
+enum EToolResources {
+  code_interpreter = 'code_interpreter',
+  file_search = 'file_search',
+}
 
 export enum FileSources {
   local = 'local',
