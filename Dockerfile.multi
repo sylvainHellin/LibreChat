@@ -18,7 +18,7 @@ RUN npm ci
 FROM base AS data-provider-build
 WORKDIR /app/packages/data-provider
 COPY packages/data-provider ./
-RUN npm run build
+RUN npm run build --verbose
 RUN npm prune --production
 
 # Client build
@@ -27,7 +27,7 @@ WORKDIR /app/client
 COPY client ./
 COPY --from=data-provider-build /app/packages/data-provider/dist /app/packages/data-provider/dist
 ENV NODE_OPTIONS="--max-old-space-size=2048"
-RUN npm run build
+RUN npm run build --verbose
 RUN npm prune --production
 
 # API setup (including client dist)
